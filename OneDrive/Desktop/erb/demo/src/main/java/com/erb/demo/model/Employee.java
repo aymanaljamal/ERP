@@ -21,6 +21,9 @@ public class Employee {
     private String name;
     private String email;
     private double salary;
+
+
+    @Column(name = "work_hours")
     private int workHours;
 
     @Enumerated(EnumType.STRING)
@@ -29,6 +32,8 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "manager_id")
     private Employee manager;
+
+    private String image;
 
     @OneToMany(mappedBy = "employee")
     @JsonManagedReference(value = "employee-stock")
