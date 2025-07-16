@@ -22,7 +22,6 @@ public class Employee {
     private String email;
     private double salary;
 
-
     @Column(name = "work_hours")
     private int workHours;
 
@@ -32,6 +31,10 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "manager_id")
     private Employee manager;
+
+    @ManyToOne
+    @JoinColumn(name = "warehouse_id") 
+    private Warehouse warehouse;
 
     private String image;
 

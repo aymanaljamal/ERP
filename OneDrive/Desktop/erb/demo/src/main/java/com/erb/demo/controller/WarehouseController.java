@@ -4,6 +4,8 @@ import com.erb.demo.Projection.WarehouseBasicView;
 import com.erb.demo.model.Warehouse;
 import com.erb.demo.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,8 +47,11 @@ public class WarehouseController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+
+
     @GetMapping("/summary")
-    public List<WarehouseBasicView> getWarehouseSummary() {
-        return service.getSummaryRaw();
+    public Page<WarehouseBasicView> getWarehouseSummary(Pageable pageable) {
+        return service.getSummaryRaw(pageable);
     }
+
 }

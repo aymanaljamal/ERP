@@ -6,6 +6,8 @@ import com.erb.demo.repository.WarehouseRepository;
 import com.erb.demo.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -15,6 +17,10 @@ public class WarehouseServiceImpl implements WarehouseService {
     @Autowired
     private WarehouseRepository repository;
 
+    @Override
+    public Page<WarehouseBasicView> getSummaryRaw(Pageable pageable) {
+        return repository.findWarehouseBasicFields(pageable);
+    }
     @Override
     public List<Warehouse> getAll() {
         return repository.findAll();
@@ -35,8 +41,5 @@ public class WarehouseServiceImpl implements WarehouseService {
         repository.deleteById(id);
     }
 
-    @Override
-    public List<WarehouseBasicView> getSummaryRaw() {
-        return repository.findWarehouseBasicFields();
-    }
+
 }

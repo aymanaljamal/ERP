@@ -32,4 +32,7 @@ public class Warehouse {
     @OneToMany(mappedBy = "warehouse")
     @JsonManagedReference(value = "warehouse-stock")
     private List<StockReceipt> stockReceipts;
+
+    @OneToMany(mappedBy = "warehouse")
+    private List<Employee> employees;
 }
