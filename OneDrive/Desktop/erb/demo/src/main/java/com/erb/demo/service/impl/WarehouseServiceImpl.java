@@ -27,6 +27,11 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
+    public Page<WarehouseBasicView> searchByName(String name, Pageable pageable) {
+        return repository.searchByName(name, pageable);
+    }
+
+    @Override
     public Warehouse getById(Long id) {
         return repository.findById(id).orElse(null);
     }

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.Map;
 
 public interface WarehouseService {
     Page<WarehouseBasicView> getSummaryRaw(Pageable pageable);
@@ -14,5 +13,5 @@ public interface WarehouseService {
     Warehouse getById(Long id);
     Warehouse save(Warehouse warehouse);
     void delete(Long id);
-
+    Page<WarehouseBasicView> searchByName(String name, Pageable pageable);
 }

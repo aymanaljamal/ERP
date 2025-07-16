@@ -53,5 +53,12 @@ public class WarehouseController {
     public Page<WarehouseBasicView> getWarehouseSummary(Pageable pageable) {
         return service.getSummaryRaw(pageable);
     }
+    @GetMapping("/search")
+    public Page<WarehouseBasicView> searchWarehousesByName(
+            @RequestParam String name,
+            Pageable pageable
+    ) {
+        return service.searchByName(name, pageable);
+    }
 
 }
