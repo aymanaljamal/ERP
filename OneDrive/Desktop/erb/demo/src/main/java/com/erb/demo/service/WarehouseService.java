@@ -1,5 +1,6 @@
 package com.erb.demo.service;
 
+import com.erb.demo.Projection.WarehouseBasicView;
 import com.erb.demo.model.Warehouse;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface WarehouseService {
     Warehouse getById(Long id);
     Warehouse save(Warehouse warehouse);
     void delete(Long id);
-    List<Map<String, Object>> getSummaryRaw();
+    List<WarehouseBasicView> getSummaryRaw();
 }

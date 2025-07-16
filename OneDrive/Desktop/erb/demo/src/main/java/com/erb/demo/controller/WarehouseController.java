@@ -1,12 +1,12 @@
 package com.erb.demo.controller;
 
+import com.erb.demo.Projection.WarehouseBasicView;
 import com.erb.demo.model.Warehouse;
 import com.erb.demo.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/warehouses")
@@ -46,7 +46,7 @@ public class WarehouseController {
         service.delete(id);
     }
     @GetMapping("/summary")
-    public List<Map<String, Object>> getWarehouseSummary() {
+    public List<WarehouseBasicView> getWarehouseSummary() {
         return service.getSummaryRaw();
     }
 }

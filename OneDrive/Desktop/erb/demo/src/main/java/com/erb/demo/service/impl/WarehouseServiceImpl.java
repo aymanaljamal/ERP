@@ -1,5 +1,6 @@
 package com.erb.demo.service.impl;
 
+import com.erb.demo.Projection.WarehouseBasicView;
 import com.erb.demo.model.Warehouse;
 import com.erb.demo.repository.WarehouseRepository;
 import com.erb.demo.service.WarehouseService;
@@ -7,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
@@ -34,9 +34,9 @@ public class WarehouseServiceImpl implements WarehouseService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
     @Override
-    public List<Map<String, Object>> getSummaryRaw() {
+    public List<WarehouseBasicView> getSummaryRaw() {
         return repository.findWarehouseBasicFields();
     }
-
 }
