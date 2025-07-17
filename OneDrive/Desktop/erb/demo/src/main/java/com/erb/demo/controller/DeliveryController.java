@@ -2,6 +2,7 @@ package com.erb.demo.controller;
 
 import com.erb.demo.model.Delivery;
 import com.erb.demo.service.DeliveryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class DeliveryController {
     }
 
     @PutMapping("/{id}")
-    public Delivery update(@PathVariable Long id, @RequestBody Delivery updated) {
+    public Delivery update(@PathVariable Long id, @RequestBody   @Valid Delivery updated) {
         Delivery existing = service.getById(id);
         if (existing != null) {
             existing.setDeliveredAt(updated.getDeliveredAt());
