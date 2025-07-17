@@ -24,6 +24,8 @@ public class Customer {
     @Column(unique = true)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
     @Pattern(regexp = "^(\\+\\d{1,3}[- ]?)?\\d{9,15}$", message = "Invalid phone number")
     private String phone;
 
