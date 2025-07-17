@@ -1,10 +1,15 @@
 package com.erb.demo.controller;
-
+import com.erb.demo.Projection.EmployeeSummaryProjection;
+import com.erb.demo.dto.EmployeeSummaryDTO;
 import com.erb.demo.model.Employee;
 import com.erb.demo.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -25,12 +30,12 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee create(@RequestBody Employee employee) {
+    public Employee create(@RequestBody @Valid Employee employee) {
         return service.save(employee);
     }
 
     @PutMapping("/{id}")
-    public Employee update(@PathVariable Long id, @RequestBody Employee updated) {
+    public Employee update(@PathVariable Long id, @RequestBody @Valid Employee updated) {
         Employee e = service.getById(id);
         if (e != null) {
             e.setName(updated.getName());
@@ -48,4 +53,13 @@ public class EmployeeController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+    @GetMapping("/summary")
+    public Page<EmployeeSummaryProjection> getSummary(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("totalDelivered").descending());
+        return service.getEmployeeSummary(pageable);
+    }
+
 }
