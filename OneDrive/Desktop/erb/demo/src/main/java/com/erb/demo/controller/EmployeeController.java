@@ -1,4 +1,5 @@
 package com.erb.demo.controller;
+import com.erb.demo.dto.EmployeeSummaryDTO;
 import com.erb.demo.model.Employee;
 import com.erb.demo.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -46,5 +47,9 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+    @GetMapping("/summary")
+    public List<EmployeeSummaryDTO> getSummary() {
+        return service.getEmployeePerformanceSummary();
     }
 }

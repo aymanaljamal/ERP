@@ -1,4 +1,4 @@
-package com.erb.demo.companyProject;
+package com.erb.demo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

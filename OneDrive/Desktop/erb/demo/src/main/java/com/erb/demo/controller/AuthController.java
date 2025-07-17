@@ -1,9 +1,8 @@
 package com.erb.demo.controller;
 
 import com.erb.demo.jwt.JwtTokenProvider;
-import com.erb.demo.companyProject.AuthRequest;
-import com.erb.demo.companyProject.AuthResponse;
-import com.erb.demo.model.Customer;
+import com.erb.demo.dto.AuthRequest;
+import com.erb.demo.dto.AuthResponse;
 import com.erb.demo.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.*;
