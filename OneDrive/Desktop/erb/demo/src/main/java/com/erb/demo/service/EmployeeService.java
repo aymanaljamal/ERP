@@ -1,7 +1,10 @@
 package com.erb.demo.service;
 
+import com.erb.demo.Projection.EmployeeSummaryProjection;
 import com.erb.demo.dto.EmployeeSummaryDTO;
 import com.erb.demo.model.Employee;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -10,6 +13,6 @@ public interface EmployeeService {
     Employee getById(Long id);
     Employee save(Employee employee);
     void delete(Long id);
-    List<EmployeeSummaryDTO> getEmployeePerformanceSummary();
+    Page<EmployeeSummaryProjection> getEmployeeSummary(Pageable pageable);
 
 }
