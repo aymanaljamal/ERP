@@ -14,6 +14,11 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
+    @GetMapping("/{id}/details")
+    public Product getDetails(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
     @GetMapping
     public List<Product> getAll() {
         return service.getAll();
