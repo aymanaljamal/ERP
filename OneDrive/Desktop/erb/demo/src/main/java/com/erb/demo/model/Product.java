@@ -5,14 +5,17 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-
 @Entity
-@Table(name = "product")
+@Table(name = "product",
+        indexes = {
+                @Index(name = "idx_product_name", columnList = "name")
+        })
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Product {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
